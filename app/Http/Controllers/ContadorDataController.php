@@ -15,8 +15,9 @@ class ContadorDataController extends Controller
 
     }
 
-    public function contadorStore(Request $request
-    ){
+    public function contadorStore(Request $request)
+    {
+       
         $url = env('URL_SERVER_API');
         $response = Http::post($url. '/contador', [
             'nombre_contador'    => $request->nombre_contador,
@@ -28,7 +29,7 @@ class ContadorDataController extends Controller
             'tarifa_agua' => $request->tarifa_agua,
             'tarifa_alcantarillado' => $request->tarifa_alcantarillado,
             'ultimo_consumo' => $request->ultimo_consumo,
-            'fecha_proximo_pago' => $request->fecha_proximo_pago
+            'fecha_proximo_pago' => $request->fecha_proximo_pago,
         ]);
 
         return redirect()->route('Contador.index');

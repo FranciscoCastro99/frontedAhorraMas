@@ -14,7 +14,7 @@ class RegistroController extends Controller
         $url = env('URL_SERVER_API');
         $response = Http::get($url. '/register');
         $data = $response->json();
-        return view('conexion', compact('data'));
+        return view('PREUBAS.conexion', compact('data'));
     }
 
     public function registroCreate(){

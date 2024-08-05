@@ -41,7 +41,7 @@
                         <option value="digital">Digital</option>
 
                     </select>
-                    <input type="text" name="valor_gasto" class="rounded-xl" placeholder="Valor a Gastar">
+                    <input type="number" name="valor_gasto" class="rounded-xl" placeholder="Valor a Gastar">
 
                     <div class="gap-4 mt-4 w-full text-center">
                         <button type="submit" class="p-2 w-24 rounded-2xl text-white bg-verdeBotones hover:bg-green-700">Calcular</button>
