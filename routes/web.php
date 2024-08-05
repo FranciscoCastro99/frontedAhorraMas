@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContadorController;
 use App\Http\Controllers\ContadorDataController;
+use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,11 @@ Route::get('/user/contador/mostrar', [ContadorController::class, 'MostrarShow'])
 //conexion con la base de datos
 Route::get('/contador', [ContadorDataController::class, 'ContadorIndex'])->name('Contador.index');
 Route::post('/contador', [ContadorDataController::class, 'ContadorStore'])->name('Contador.store');
+
+
+//conexion base de datos presupuesto 
+Route::post('/presupuesto', [PresupuestoController::class, 'presupuestoStore'])->name('presupuesto.store');
+
 
 
 Route::get('/user/daños', [ContadorController::class, 'DañosIndex'])->name('perfil.Daños');
