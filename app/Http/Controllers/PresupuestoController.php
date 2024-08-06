@@ -10,7 +10,7 @@ class PresupuestoController extends Controller
 
 
     public function presupuestoStore(Request $request)
-    {   
+    {
         $url = env('URL_SERVER_API');
         $response = Http::post($url. '/presupuesto', [
             'contador_id' => $request->contador_id,
@@ -18,6 +18,6 @@ class PresupuestoController extends Controller
             'valor_gasto' => $request->valor_gasto
         ]);
 
-        return "presupuesto creado";
+        return view('perfil.PresupuestoCalcular');
     }
 }

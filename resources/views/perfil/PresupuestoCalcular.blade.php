@@ -14,7 +14,7 @@
 
     @section('contenido')
         <div class="grid grid-cols-2 p-4 w-full">
-            <div class="flex flex-col justify-center p-4">
+            <div class="flex flex-col justify-center">
                 <h1 class="text-2xl font-semibold">Presupuesto</h1>
                 <img src="" alt="hola" class="h-64">
                 <span>
@@ -23,32 +23,70 @@
                     contribuir a la conservación del medio ambiente.
                 </span>
             </div>
-            <div class="flex place-content-center w-full p-4">
-                <form action="{{ route('presupuesto.store') }}" class="flex flex-col rounded-2xl border-solid gap-4 border-2 border-black-300 shadow-2xl p-2 w-1/2 place-content-center text-sm" method="POST">
+            <div class="flex place-content-center w-full">
+                <form action="" class="rounded-2xl border-solid gap-4 border-2 border-black-300 shadow-2xl p-4 text-sm" method="POST">
                     @csrf
-                    <H1 class="font-semibold text-center text-2xl">Simulador de tarifa</H1>
-                    <select  id="contador_id" name="contador_id" class="text-sm pl-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Elegir Contador</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        </select>
+                    <H1 class="font-semibold text-center text-2xl pb-4">Simulador</H1>
 
-                        <select id="servicio" name="servicio" class="text-sm pl-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Tipo de Servicio</option>
-                        <option value="anologo">Analógico</option>
-                        <option value="digital">Digital</option>
+                    <div class="grid grid-cols-2 place-content-center py-4 gap-4">
+                        <div class="flex flex-col w-full justify-center text-end gap-8">
+                            <span class="place-content-center">Agua:</span>
+                            <span class="place-content-center">Alcantarillado:</span>
+                            <span class="place-content-center">Cargo fijo:</span>
+                        </div>
+                        <div class="flex flex-col w-full gap-4">
+                            <input type="number" name="valor_gasto" class="rounded-xl w-2/4" placeholder="Valor">
+                            <input type="number" name="valor_gasto" class="rounded-xl w-2/4" placeholder="Valor">
+                            <input type="number" name="valor_gasto" class="rounded-xl w-2/4" placeholder="Valor">
+                        </div>
+                    </div>
 
-                    </select>
-                    <input type="number" name="valor_gasto" class="rounded-xl" placeholder="Valor a Gastar">
-
-                    <div class="gap-4 mt-4 w-full text-center">
-                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" type="submit" class="p-2 w-24 rounded-2xl text-white bg-verdeBotones hover:bg-green-700">Calcular</button>
+                    <div class="gap-4 mt-4 text-center">
+                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" type="submit" class="p-2 rounded-2xl text-white bg-verdeBotones hover:bg-green-700">Crear Presupuesto</button>
                     </div>
                 </form>
+
+                {{-- Validación  --}}
+
+                <div id="small-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-md max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                    Resultado
+                                </h3>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-2 md:p-5 space-y-4">
+                                <form class=" grid grid-cols-2 content-center w-full px-8 gap-4">
+
+                                    <div class="flex flex-col w-full place-content-center gap-4">
+                                        <span class="place-content-center">Tu valor a gastar: :</span>
+                                        <span class="place-content-center">Tu consumo: :</span>
+                                        <span class="place-content-center"> Consumo promedio de tu lugar de residencia:</span>
+
+                                    </div>
+                                    <div class="flex flex-col w-full place-content-center gap-4">
+                                        <input type="number" name="valor_gasto" class="rounded-xl w-1/2" placeholder="Valor">
+                                        <input type="number" name="valor_gasto" class="rounded-xl w-1/2" placeholder="m3">
+                                        <input type="number" name="valor_gasto" class="rounded-xl w-1/2" placeholder="m3">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="small-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
         </div>
         <div class="w-full flex justify-center">
