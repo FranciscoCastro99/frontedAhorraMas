@@ -26,7 +26,7 @@
           <nav class="navbar">
             <ul>
               <li><a >Acerca de Nosotros</a></li>
-              <li><a href="{{route('login')}}">Iniciar Sesión</a></li>
+              <li><a href="{{route('login.index')}}">Iniciar Sesión</a></li>
               <li><a href="{{route('registroCreate')}}">Registrarse</a></li>
             </ul>
           </nav>

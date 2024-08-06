@@ -23,7 +23,7 @@
                 <a href="{{ route('registroCreate') }}" class="nav-link">Registro</a>
             </li>
             <li>
-                <a href="{{ route('login') }}" class="nav-link">Inicio de sesión</a>
+                <a href="{{ route('login.index') }}" class="nav-link">Inicio de sesión</a>
             </li>
             <li>
                 <a href="#" class="nav-link">Acerca de nosotros</a>
@@ -45,7 +45,7 @@
                     <div class="form-wrapper">
                         <div class="contact-heading">
                             <h1>Crea cuenta Ahorra <span>+</span></h1>
-                            <p class="text">Si ya tienes cuenta <a href="{{ route('login') }}">Inicia sesión</a></p>
+                            <p class="text">Si ya tienes cuenta <a href="{{ route('login.index') }}">Inicia sesión</a></p>
                         </div>
 
                         <form action="{{ route('registroStore') }}" method="post" class="contact-form">

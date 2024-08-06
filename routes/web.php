@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContadorController;
 use App\Http\Controllers\ContadorDataController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\SimuladorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use Monolog\Handler\RotatingFileHandler;
@@ -22,7 +24,7 @@ Route::get('/', function () {
 Route::get('/loginAdmin', [ContadorController::class, 'loginAdmin'])->name('loginAdmin');
 
 //LOGIN USUARIO 
-Route::get('/login', [ContadorController::class, 'login'])->name('login');
+Route::get('/login', [ContadorController::class, 'login'])->name('login.index');
 
 
 //registro usuario
@@ -51,6 +53,12 @@ Route::post('/contador', [ContadorDataController::class, 'ContadorStore'])->name
 //conexion base de datos presupuesto 
 Route::post('/presupuesto', [PresupuestoController::class, 'presupuestoStore'])->name('presupuesto.store');
 
+//conexion base de datos simulador
+Route::get('/simulador', [SimuladorController::class, 'simuladorIndex'])->name('simulador.index');
+Route::post('/simulador', [SimuladorController::class, 'simuladorStore'])->name('simulador.store');
+
+//conexion base de datos login
+Route::post('/login', [LoginController::class, 'loginStore'])->name('login.store');
 
 
 Route::get('/user/daños', [ContadorController::class, 'DañosIndex'])->name('perfil.Daños');

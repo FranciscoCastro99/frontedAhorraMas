@@ -20,20 +20,20 @@
             <div class="bg-white rounded py-2 px-6 flex flex-col justify-center">
                 <div class="mb-4">
                     <h1 class="text-center font-sans font-bold pt-4 pb-8">INICIAR SESIÓN</h1>
-                    <form action="{{ route('login') }}" method="POST" class="space-y-4 flex flex-col">
+                    <form action="{{ route('login.store') }}" method="POST" class="space-y-4 flex flex-col">
                         @csrf
                         <div class="relative flex justify-center">
                             <input
                                 placeholder="Correo o Documento"
                                 type="text"
                                 class="rounded bg-gray-100 border-2 border-gray-300"
-                                name="email" required autofocus autocomplete="username"
+                                name="CoD" required autofocus autocomplete="username"
                             />
                         </div>
                         <div class="relative flex justify-center">
                             <input
                                 placeholder="Contraseña"
-                                type="password"
+                                type="text"
                                 class="rounded bg-gray-100 border-2 border-gray-300"
                                 name="password" required autocomplete="current-password"
                             />

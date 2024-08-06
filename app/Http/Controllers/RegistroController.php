@@ -31,7 +31,8 @@ class RegistroController extends Controller
             'password'       => $request->password
         ]);
 
-        return redirect()->route('registroIndex');
+        return redirect()->route('login.index');
+        
     }
 
 }
