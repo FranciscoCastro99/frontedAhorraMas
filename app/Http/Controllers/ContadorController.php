@@ -56,5 +56,4 @@ class ContadorController extends Controller
         return view('Admin.register-admin');
     }
 
-
 }

@@ -34,7 +34,7 @@ Route::post('/registro', [RegistroController::class, 'registroStore'])->name('re
 
 
 
-//registro admin 
+//registro admin
 Route::get('/registro/Admin', [ContadorController::class, 'registroAdmin'])->name('registroAdmin');
 
 
@@ -50,7 +50,7 @@ Route::get('/contador', [ContadorDataController::class, 'ContadorIndex'])->name(
 Route::post('/contador', [ContadorDataController::class, 'ContadorStore'])->name('Contador.store');
 
 
-//conexion base de datos presupuesto 
+//conexion base de datos presupuesto
 Route::post('/presupuesto', [PresupuestoController::class, 'presupuestoStore'])->name('presupuesto.store');
 
 //conexion base de datos simulador

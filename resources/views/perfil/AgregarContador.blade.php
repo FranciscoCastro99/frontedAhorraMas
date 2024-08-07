@@ -3,7 +3,27 @@
     <div class="w-screen h-screen flex">
         <div class="w-1/2 text-center text-xl">
             <h1 class="my-6 font-semibold">Agregar Contador</h1>
-            
+            @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+<!-- Mostrar mensaje general si existe -->
+    @if(session('message')) 
+    <div class="alert alert-danger">
+        {{ session('message') }}
+    </div>
+    @endif
+
+    <!-- Mostrar errores específicos si existen     -->
+    @if($errors->any()) 
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
             <form action="{{ route('Contador.store') }}" class="max-w-full px-8 flex flex-col text-sm" method="POST">
                 @csrf
                 <div class="flex justify-center gap-4">

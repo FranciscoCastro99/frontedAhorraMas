@@ -9,7 +9,7 @@ class SimuladorController extends Controller
 {
 
     public function simuladorIndex(){
-        return view('PREUBAS.simulador');
+        return view('perfil.PresupuestoCalcular');
     }
 
     public function simuladorStore(Request $request)
@@ -20,6 +20,6 @@ class SimuladorController extends Controller
             'alcantarillado' => $request->alcantarillado,
             'cargo_fijo'     => $request->cargo_fijo
         ]);
-        return "presupuesto creado";
+        return view('perfil.PresupuestoCalcular');
     }
 }

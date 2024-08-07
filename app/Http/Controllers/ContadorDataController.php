@@ -11,7 +11,7 @@ class ContadorDataController extends Controller
         $url = env('URL_SERVER_API');
         $response = Http::get($url. '/contador');
         $data = $response->json();
-        return view('PREUBAS.contador', compact('data'));
+        return view('perfil.Contador', compact('data'));
 
     }
 
@@ -32,6 +32,16 @@ class ContadorDataController extends Controller
             'fecha_proximo_pago' => $request->fecha_proximo_pago,
         ]);
 
-        return redirect()->route('Contador.index');
+
+        $responseData = $response->json();
+
+        if($response->successful()){
+            return redirect()->route('Contador.index')->with('succes', 'contador creado correctamente');
+        }else{
+            $errors = $responseData['errors'] ??[];
+            return back()->withErrors($errors)->with('message', $responseData['message']);
+        }
+
+
     }
 }

@@ -6,8 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/registro.css') }}">
     <title>Ahorra+</title>
-</head>
-<body class="dark-mode">
+</head> 
+
+    {{-- mensakes por si se crea o no correctamente el registro --}}
+    <!-- Mostrar mensaje de éxito si existe -->
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+<!-- Mostrar mensaje general si existe -->
+    @if(session('message')) 
+    <div class="alert alert-danger">
+        {{ session('message') }}
+    </div>
+    @endif
+
+    <!-- Mostrar errores específicos si existen     -->
+    @if($errors->any()) 
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
+
     <header>
         <div class="container">
            <ul>

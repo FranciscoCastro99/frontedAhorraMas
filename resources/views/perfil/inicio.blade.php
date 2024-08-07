@@ -11,6 +11,12 @@
 
     @section('contenido')
 
+    @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
     <div class="w-full h-screen pt-4 px-14">
         <div class="grid grid-cols-2 gap-6 px-12 ">
             <a href="user/contador" class="flex flex-col transition ease-in-out delay-150 justify-center items-center rounded-2xl hover:scale-105 text-xl font-regular gap-4 text-white p-4 h-56 hover:ring-2 ring-azulCeleste bg-azulOscuro shadow-lg shadow-azulBotones">

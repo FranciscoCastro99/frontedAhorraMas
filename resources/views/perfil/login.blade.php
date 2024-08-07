@@ -16,10 +16,38 @@
             <img class="object-cover absolute h-full justify-end z-50" src="/img/plantilla.svg" alt="">
         </div>
 
+        
+
+
         <div class="py-6 relative w-full h-screen sm:w-7/12 md:w-6/12 lg:w-4/12 m-auto">
             <div class="bg-white rounded py-2 px-6 flex flex-col justify-center">
                 <div class="mb-4">
                     <h1 class="text-center font-sans font-bold pt-4 pb-8">INICIAR SESIÓN</h1>
+                    
+       
+    {{-- mensakes por si se crea o no correctamente el registro --}}
+    <!-- Mostrar mensaje de éxito si existe -->
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+<!-- Mostrar mensaje general si existe -->
+    @if(session('message')) 
+    <div class="alert alert-danger">
+        {{ session('message') }}
+    </div>
+    @endif
+
+    <!-- Mostrar errores específicos si existen     -->
+    @if($errors->any()) 
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
                     <form action="{{ route('login.store') }}" method="POST" class="space-y-4 flex flex-col">
                         @csrf
                         <div class="relative flex justify-center">

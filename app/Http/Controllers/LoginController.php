@@ -15,6 +15,14 @@ class LoginController extends Controller
             'CoD'      => $request->CoD,
             'password' => $request->password
         ]);
-        return redirect()->route('perfil.Inicio');
+        $responseData = $response->json();
+    
+        if($response->successful()){
+            return redirect()->route('perfil.Inicio');
+        }else{
+            $errors = $responseData['errors'] ??[];
+
+            return back()->withErrors($errors)->with('messag', $responseData['message']);
+        }
     }
 }

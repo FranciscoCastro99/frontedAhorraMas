@@ -31,8 +31,15 @@ class RegistroController extends Controller
             'password'       => $request->password
         ]);
 
-        return redirect()->route('login.index');
-        
+        $responseData = $response->json();
+
+        if ($response->successful()) {
+            return redirect()->route('perfil.Inicio')->with('success', 'Registro creado correctamente.');
+        } else {
+
+            $errors = $responseData['errors'] ??[];
+            return back()->withErrors($errors)->with('message', $responseData['message']);
+        }
     }
 
 }
