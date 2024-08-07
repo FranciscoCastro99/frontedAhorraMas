@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="flex flex-col pt-4 items-center gap-6">
-                    <a href="" class="bg-gray-400 text-center hover:bg-gray-500 text-white h-auto w-1/2 py-2 rounded-xl">Eliminar Contador</a>
+                    <a href="{{route('perfil.Eliminar')}}" class="bg-gray-400 text-center hover:bg-gray-500 text-white h-auto w-1/2 py-2 rounded-xl">Eliminar Contador</a>
                 </div>
             </div>
 

@@ -36,6 +36,12 @@ class ContadorController extends Controller
     public function HistorialIndex(){
         return view('perfil.Historial');
     }
+    public function HistorialAnualIndex(){
+        return view('perfil.HistorialAnual');
+    }
+    public function HistorialMensualIndex(){
+        return view('perfil.HistorialMensual');
+    }
 
     public function PresupuestoIndex(){
         return view('perfil.Presupuesto');

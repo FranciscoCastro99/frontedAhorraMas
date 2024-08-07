@@ -16,7 +16,34 @@
         <div class="grid grid-cols-2 p-4 w-full">
             <div class="flex flex-col justify-center p-4">
                 <h1 class="text-2xl font-semibold">Presupuesto</h1>
-                <img src="" alt="hola" class="h-64">
+                <div class="w-10/12">
+                    <canvas id="anual"></canvas>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script>
+                    const ctx = document.getElementById('anual');
+
+                    new Chart (ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2013', '2014', '2015', '2016', '2017', '2018','2019', '2020', '2021', '2022', '2023', '2024'],
+                        datasets: [{
+                        label: 'Gasto Anual',
+                        data: [12000, 19000, 30000, 50000, 20000, 30000,12000, 19000, 30000, 50000, 20000, 30000,],
+                        borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                        }
+                    }
+                    });
+                </script>
                 <span>
                     Al crear un presupuesto de consumo de agua, podrás monitorear y controlar de manera más efectiva el uso
                     de este recurso tan importante. Esto te permitirá identificar posibles áreas de ahorro, reducir costos y

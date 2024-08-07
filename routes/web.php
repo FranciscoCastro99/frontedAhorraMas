@@ -67,6 +67,7 @@ Route::get('/user/daños', [ContadorController::class, 'DañosIndex'])->name('pe
 
 
 Route::get('/user/historial', [ContadorController::class, 'HistorialIndex'])->name('perfil.Historial');
+Route::get('/user/historialAnual', [ContadorController::class, 'HistorialAnualIndex'])->name('perfil.HistorialAnual');
 
 Route::get('/user/presupuesto', [ContadorController::class, 'PresupuestoIndex'])->name('perfil.Presupuesto');
 

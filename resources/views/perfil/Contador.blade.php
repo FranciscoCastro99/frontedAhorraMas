@@ -124,7 +124,7 @@
                 </div>
                 <div class="flex flex-col pt-8 items-center gap-6">
                     <a href="{{route('perfil.Agregar')}}" class="bg-verdeBotones hover:bg-green-500 text-white text-center h-auto w-1/2 py-2 rounded-xl">Agregar Contador</a>
-                    <a href="" class="bg-gray-400 text-center hover:bg-gray-500 text-white h-auto w-1/2 py-2 rounded-xl">Eliminar Contador</a>
+                    <a href="{{route('perfil.Eliminar')}}" class="bg-gray-400 text-center hover:bg-gray-500 text-white h-auto w-1/2 py-2 rounded-xl">Eliminar Contador</a>
                 </div>
             </div>
 
