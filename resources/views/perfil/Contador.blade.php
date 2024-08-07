@@ -135,7 +135,7 @@
 
                 {{-- grafica de contador --}}
 
-                    <div class="h-44 grid grid-cols-2 px-4">
+                    <a href="{{route('perfil.Mostrar')}}" class="h-44 grid grid-cols-2 px-4">
                         <div class="flex justify-center">
                             <div class="w-40">
                                 <canvas id="Contador1"></canvas>
@@ -173,12 +173,12 @@
                             <h3>Gasto</h3>
                             <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg"  placeholder="55220">
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="h-1/2 flex flex-col text-center text-xl">
                     <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
                     <div class="flex h-full">
-                        <div class="h-full p-2">
+                        <a href="{{route('perfil.Mostrar')}}" class="h-full p-2">
                             <h2 class="pb-2">Contador 2</h2>
                             <div class="grid grid-cols-2">
                                 <div class="flex justify-center">
@@ -216,8 +216,8 @@
                                     <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
                                 </div>
                             </div>
-                        </div>
-                        <div class="h-full p-2">
+                        </a>
+                        <a href="{{route('perfil.Mostrar')}}" class="h-full p-2">
                             <h2 class="pb-2">Contador 3</h2>
                             <div class="grid grid-cols-2">
                                 <div class="flex justify-center">
@@ -255,7 +255,7 @@
                                     <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
