@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContadorController;
 use App\Http\Controllers\ContadorDataController;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\graficas;
+use App\Http\Controllers\GraficasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProfileController;
@@ -18,12 +21,10 @@ Route::get('/', function () {
 });
 
 
-
-
 //login admin
 Route::get('/loginAdmin', [ContadorController::class, 'loginAdmin'])->name('loginAdmin');
 
-//LOGIN USUARIO 
+//LOGIN USUARIO
 Route::get('/login', [ContadorController::class, 'login'])->name('login.index');
 
 
@@ -44,6 +45,7 @@ Route::get('/user', [ContadorController::class, 'UserIndex'])->name('perfil.Inic
 Route::get('/user/contador', [ContadorController::class, 'ContadorIndex'])->name('perfil.Contador');
 Route::get('/user/contador/agregar', [ContadorController::class, 'AgregarIndex'])->name('perfil.Agregar');
 Route::get('/user/contador/mostrar', [ContadorController::class, 'MostrarShow'])->name('perfil.Mostrar');
+Route::get('/user/contador/eliminar', [ContadorController::class, 'DeleteContador'])->name('perfil.Eliminar');
 
 //conexion con la base de datos
 Route::get('/contador', [ContadorDataController::class, 'ContadorIndex'])->name('Contador.index');
@@ -70,3 +72,10 @@ Route::get('/user/presupuesto', [ContadorController::class, 'PresupuestoIndex'])
 
 
 
+
+
+//Ruta administrador Crud
+Route::get('/user/adiministrador', [CrudController::class, 'index'])->name('Admin.crud');
+
+Route::get('/graficas',[GraficasController::class, 'GraficasCreate'])->name('perfil.graficas');
+Route::get('/graficas',[GraficasController::class, 'GraficasIndex'])->name('perfil.graficas');

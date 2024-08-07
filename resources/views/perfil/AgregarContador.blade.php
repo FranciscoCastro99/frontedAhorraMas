@@ -10,14 +10,14 @@
     @endif
 
 <!-- Mostrar mensaje general si existe -->
-    @if(session('message')) 
+    @if(session('message'))
     <div class="alert alert-danger">
         {{ session('message') }}
     </div>
     @endif
 
     <!-- Mostrar errores específicos si existen     -->
-    @if($errors->any()) 
+    @if($errors->any())
     <div class="alert alert-danger">
         @foreach($errors->all() as $error)
             <p>{{ $error }}</p>
@@ -27,7 +27,7 @@
             <form action="{{ route('Contador.store') }}" class="max-w-full px-8 flex flex-col text-sm" method="POST">
                 @csrf
                 <div class="flex justify-center gap-4">
-                    
+
                     <input type="text" class="w-full rounded-xl" name="nombre_contador" placeholder="Nombre del Contador">
                     <input type="number" class="w-full rounded-xl" name="num_contador" placeholder="Número de Contador">
                 </div>
@@ -94,12 +94,37 @@
                 </div>
             </div>
             <h2 class="font-semibold mt-8">Elige un color para tu contador</h2>
-            <div class="flex pt-20 justify-center gap-8">
+            <div class="flex mt-4 justify-center gap-8">
                 <div>
-                    <button>grafica</button>
-                </div>
-                <div>
-                    <button>color</button>
+                    <div class="w-40">
+                        <canvas id="Contador1"></canvas>
+                    </div>
+
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                      <script>
+                        const ctx = document.getElementById('Contador1');
+
+                        new Chart(ctx, {
+                          type: 'doughnut',
+                          data: {
+                            // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                              label: '# of Votes',
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
+
                 </div>
             </div>
 

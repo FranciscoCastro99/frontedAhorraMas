@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="mt-4 w-full flex justify-center">
-                        <a href="" class="flex">
+                        <a href="#" class="flex">
                             <svg width="32" height="20" viewBox="0 0 45 39" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                                 <mask id="mask0_1317_560" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -118,67 +118,141 @@
                                         fill="#585353" />
                                 </g>
                             </svg>
-                                Agregar Contador
+                                Agregar Notificación
                         </a>
                     </div>
                 </div>
                 <div class="flex flex-col pt-8 items-center gap-6">
-                    <a href="" class="bg-verdeBotones hover:bg-green-500 text-white text-center h-auto w-1/2 py-2 rounded-xl">Agregar Contador</a>
+                    <a href="{{route('perfil.Agregar')}}" class="bg-verdeBotones hover:bg-green-500 text-white text-center h-auto w-1/2 py-2 rounded-xl">Agregar Contador</a>
                     <a href="" class="bg-gray-400 text-center hover:bg-gray-500 text-white h-auto w-1/2 py-2 rounded-xl">Eliminar Contador</a>
                 </div>
             </div>
 
-            <div class="flex flex-col h-full bg-gray-600 @yield('contador')">
+            <div class="flex flex-col h-full @yield('contador')">
                 <div class="h-2/6 text-center text-xl">
                     <h1 class="font-semibold text-2xl">Contador Principal</h1>
                     <h2 class="font-semibold"> Contador: {{ "contador_id" }}</h2>
 
                 {{-- grafica de contador --}}
 
-                    <div class="grid grid-cols-2 p-4">
-                        <div>
-                            <canvas id="myChart" width="400" height="400"></canvas>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js"></script>
+                    <div class="h-44 grid grid-cols-2 px-4">
+                        <div class="flex justify-center">
+                            <div class="w-40">
+                                <canvas id="Contador1"></canvas>
+                              </div>
 
+                              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+                              <script>
+                                const ctx = document.getElementById('Contador1');
+
+                                new Chart(ctx, {
+                                  type: 'doughnut',
+                                  data: {
+                                    // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    datasets: [{
+                                      label: '# of Votes',
+                                      data: [12, 19, 3, 5, 2, 3],
+                                      borderWidth: 1
+                                    }]
+                                  },
+                                  options: {
+                                    scales: {
+                                      y: {
+                                        beginAtZero: true
+                                      }
+                                    }
+                                  }
+                                });
+                              </script>
 
                         </div>
-                        <div>
+                        <div class="">
                             <h3>Consumo</h3>
-                            <input type="text" name="consumo_m3" class="w-1/4" placeholder="55220">
+                            <input type="text" name="consumo_m3" class="w-1/4 rounded-lg" placeholder="55220">
                             <h3>Gasto</h3>
-                            <input type="text" name="consumo_pesos" class="w-1/4"  placeholder="55220">
+                            <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg"  placeholder="55220">
                         </div>
                     </div>
                 </div>
-                <div class="h-1/2 text-center text-xl">
-                    <h2>Contadores Secundarios</h2>
+                <div class="h-1/2 flex flex-col text-center text-xl">
+                    <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
                     <div class="flex h-full">
-                        <div class="h-full p-4">
-                            <h2>Contador 2</h2>
+                        <div class="h-full p-2">
+                            <h2 class="pb-2">Contador 2</h2>
                             <div class="grid grid-cols-2">
-                                <div>
-                                    <img src="" alt="contador">
+                                <div class="flex justify-center">
+                                    <div class="w-40">
+                                        <canvas id="contador2"></canvas>
+                                    </div>
+
+                                    <script>
+                                    const ctxs = document.getElementById('contador2');
+
+                                    new Chart(ctxs, {
+                                        type: 'doughnut',
+                                        data: {
+                                        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [12, 19, 3, 5, 2, 3],
+                                            borderWidth: 1
+                                        }]
+                                        },
+                                        options: {
+                                        scales: {
+                                            y: {
+                                            beginAtZero: true
+                                            }
+                                        }
+                                        }
+                                    });
+                                    </script>
                                 </div>
                                 <div class="text-lg">
                                     <h3>Consumo</h3>
-                                    <input type="text" class="w-1/2" placeholder="55220">
+                                    <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
                                     <h3>Gasto</h3>
-                                    <input type="text" class="w-1/2"  placeholder="55220">
+                                    <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
                                 </div>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <h2>Contador 3</h2>
+                        <div class="h-full p-2">
+                            <h2 class="pb-2">Contador 3</h2>
                             <div class="grid grid-cols-2">
-                                <div>
-                                    <img src="" alt="contador">
+                                <div class="flex justify-center">
+                                    <div class="w-40">
+                                        <canvas id="contador3"></canvas>
+                                    </div>
+
+                                    <script>
+                                    const ctxse = document.getElementById('contador3');
+
+                                    new Chart(ctxse, {
+                                        type: 'doughnut',
+                                        data: {
+                                        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [12, 19, 3, 5, 2, 3],
+                                            borderWidth: 1
+                                        }]
+                                        },
+                                        options: {
+                                        scales: {
+                                            y: {
+                                            beginAtZero: true
+                                            }
+                                        }
+                                        }
+                                    });
+                                    </script>
                                 </div>
                                 <div class="text-lg">
                                     <h3>Consumo</h3>
-                                    <input type="text" class="w-1/2" placeholder="55220">
+                                    <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
                                     <h3>Gasto</h3>
-                                    <input type="text" class="w-1/2"  placeholder="55220">
+                                    <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
                                 </div>
                             </div>
                         </div>
