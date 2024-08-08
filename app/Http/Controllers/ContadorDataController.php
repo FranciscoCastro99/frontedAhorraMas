@@ -10,8 +10,10 @@ class ContadorDataController extends Controller
     public function contadorIndex(){
         $url = env('URL_SERVER_API');
         $response = Http::get($url. '/contador');
-        $data = $response->json();
-        return view('perfil.Contador', compact('data'));
+        $contadorData = $response->json();
+           // Depura los datos
+        dd($contadorData);
+        return view('perfil.Contador', compact('contadorData'));
 
     }
 
@@ -19,6 +21,7 @@ class ContadorDataController extends Controller
     {
        
         $url = env('URL_SERVER_API');
+    
         $response = Http::post($url. '/contador', [
             'nombre_contador'    => $request->nombre_contador,
             'num_contador'       => $request->num_contador, 

@@ -36,9 +36,10 @@ class RegistroController extends Controller
         if ($response->successful()) {
             return redirect()->route('perfil.Inicio')->with('success', 'Registro creado correctamente.');
         } else {
-
-            $errors = $responseData['errors'] ??[];
-            return back()->withErrors($errors)->with('message', $responseData['message']);
+            // Verifica la estructura de $responseData antes de acceder a las claves
+            $errors = $responseData['errors'] ?? [];
+            $message = $responseData['message'] ?? 'Error desconocido';
+            return back()->withErrors($errors)->with('message', $message);
         }
     }
 

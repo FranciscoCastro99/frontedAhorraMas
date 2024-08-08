@@ -10,8 +10,25 @@
 </head>
 
 <body>
+    <br><br><br><br><br><br><br>
+    @if(isset($contadorData) && !empty($contadorData))
+    <ul>
+        @foreach($contadorData as $datos)
+            <li>
+                <strong>Contador: {{ $datos['nombre_contador'] }}</strong>
+                <ul>
+                    @foreach($datos['consumos'] as $consumo)
+                        <li>Consumo M3: {{ $consumo['consumo_m3'] }}, Consumo Pesos: {{ $consumo['consumo_pesos'] }}</li>
+                    @endforeach
+                </ul>
+            </li>
+        @endforeach
+    </ul>
+@else
+    <p>No hay datos disponibles.</p>
+@endif
 
-    @section('contenido')
+    {{-- @section('contenido')
         <div class="grid grid-cols-2 p-4">
             <div class="h-screen ml-8">
                 <div class="py-4 text-center">
@@ -133,7 +150,7 @@
                     <h1 class="font-semibold text-2xl">Contador Principal</h1>
                     <h2 class="font-semibold"> Contador: {{ "contador_id" }}</h2>
 
-                {{-- grafica de contador --}}
+                grafica de contador
 
                     <a href="{{route('perfil.Mostrar')}}" class="h-44 grid grid-cols-2 px-4">
                         <div class="flex justify-center">
@@ -281,7 +298,7 @@
                 }
                 }
             });
-    @endsection
+    @endsection --}}
 </body>
 
 </html>
