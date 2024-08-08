@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Http;
 class ContadorDataController extends Controller
 {
     public function contadorIndex(){
-        $url = env('URL_SERVER_API');
-        $response = Http::get($url. '/contador');
+        $url = env('URL_API_CONTADOR');
+        $response = Http::get($url);
         $contadorData = $response->json();
            // Depura los datos
         dd($contadorData);
@@ -20,9 +20,9 @@ class ContadorDataController extends Controller
     public function contadorStore(Request $request)
     {
        
-        $url = env('URL_SERVER_API');
+        $url = env('URL_API_CONTADOR');
     
-        $response = Http::post($url. '/contador', [
+        $response = Http::post($url, [
             'nombre_contador'    => $request->nombre_contador,
             'num_contador'       => $request->num_contador, 
             'barrio'          => $request->barrio,
@@ -35,16 +35,34 @@ class ContadorDataController extends Controller
             'fecha_proximo_pago' => $request->fecha_proximo_pago,
         ]);
 
-
+        // Obtener datos JSON de la respuesta
         $responseData = $response->json();
 
-        if($response->successful()){
-            return redirect()->route('Contador.index')->with('succes', 'contador creado correctamente');
-        }else{
-            $errors = $responseData['errors'] ??[];
-            return back()->withErrors($errors)->with('message', $responseData['message']);
-        }
+        // Verificar si la respuesta es exitosa
+        if ($response->successful()) {
+            return redirect()->route('perfil.Contador')->with('success', $responseData['message']);
+        } else {
+            // Manejar errores cuando la respuesta contiene errores
+            $errors = [];
+            if (isset($responseData['errors']) && is_array($responseData['errors'])) {
+                // Flatten errors if they are in array of arrays
+                foreach ($responseData['errors'] as $error) {
+                    if (is_array($error)) {
+                        $errors = array_merge($errors, $error);
+                    } else {
+                        $errors[] = $error;
+                    }
+                }
+            } else {
+                // Default error handling if 'errors' key does not exist
+                $errors[] = 'Hubo un error al procesar la solicitud.';
+            }
 
+            // Asegurarse de que 'message' esté definido en la respuesta de la API
+            $message = $responseData['message'] ?? 'Hubo un error al crear el contador.';
+
+            return back()->withErrors($errors)->with('message', $message);
+        }
 
     }
 }

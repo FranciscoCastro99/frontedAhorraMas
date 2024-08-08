@@ -1,7 +1,7 @@
 <h1>Todos los registros</h1>
 
 <table>
-    @forelse ($data as $item)
+    @forelse ($datass as $item)
         <tr>
             <td>
                 {{ $item['nombre_contador'] }}<br>
