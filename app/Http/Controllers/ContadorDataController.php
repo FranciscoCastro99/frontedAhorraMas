@@ -79,4 +79,8 @@ class ContadorDataController extends Controller
         }
 
     }
+
+    public function eliminar(){
+        
+    }
 }
