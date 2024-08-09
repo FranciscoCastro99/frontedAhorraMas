@@ -173,166 +173,177 @@
                 {{-- grafica de contador --}}
 
 
-
                 @if(isset($contadores) && count($contadores) > 0)
-            <!-- Gráfico para Contador 1 -->
-            <div class="h-44 grid grid-cols-2 px-4">
-                <div class="flex justify-center">
-                    <div class="w-40">
-                        <canvas id="Contador1"></canvas>
+                <!-- Gráfico para Contador 1 -->
+                <div class="h-44 grid grid-cols-2 px-4">
+                    <div class="flex justify-center">
+                        <div class="w-40">
+                            <canvas id="Contador1"></canvas>
+                        </div>
+                    </div>
+                    <div class="">
+                        <h3>Consumo</h3>
+                        <input type="text" name="consumo_m3" class="w-1/4 rounded-lg" value="{{ $contadores[0]['consumos'][0]['consumo_m3'] }}" readonly>
+                        <h3>Gasto</h3>
+                        <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg" value="{{ $contadores[0]['consumos'][0]['consumo_pesos'] }}" readonly>
                     </div>
                 </div>
-                <div class="">
-                    <h3>Consumo</h3>
-                    <input type="text" name="consumo_m3" class="w-1/4 rounded-lg" placeholder="55220">
-                    <h3>Gasto</h3>
-                    <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg" placeholder="55220">
-                </div>
-            </div>
-
-            <!-- Gráfico para Contador 2 -->
-            <div class="h-1/2 flex flex-col text-center text-xl">
-                <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
-                <div class="flex h-full">
-                    <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
-                        <h2 class="pb-2">Contador 2</h2>
-                        <div class="grid grid-cols-2">
-                            <div class="flex justify-center">
-                                <div class="w-40">
-                                    <canvas id="contador2"></canvas>
+        
+                <!-- Gráfico para Contador 2 -->
+                <div class="h-1/2 flex flex-col text-center text-xl">
+                    <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
+                    <div class="flex h-full">
+                        <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
+                            <h2 class="pb-2">Contador 2</h2>
+                            <div class="grid grid-cols-2">
+                                <div class="flex justify-center">
+                                    <div class="w-40">
+                                        <canvas id="contador2"></canvas>
+                                    </div>
+                                </div>
+                                <div class="text-lg">
+                                    <h3>Consumo</h3>
+                                    <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[1]['consumos'][0]['consumo_m3'] }}" readonly>
+                                    <h3>Gasto</h3>
+                                    <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[1]['consumos'][0]['consumo_pesos'] }}" readonly>
                                 </div>
                             </div>
-                            <div class="text-lg">
-                                <h3>Consumo</h3>
-                                <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                                <h3>Gasto</h3>
-                                <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
-                        <h2 class="pb-2">Contador 3</h2>
-                        <div class="grid grid-cols-2">
-                            <div class="flex justify-center">
-                                <div class="w-40">
-                                    <canvas id="contador3"></canvas>
+                        </a>
+                        <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
+                            <h2 class="pb-2">Contador 3</h2>
+                            <div class="grid grid-cols-2">
+                                <div class="flex justify-center">
+                                    <div class="w-40">
+                                        <canvas id="contador3"></canvas>
+                                    </div>
+                                </div>
+                                <div class="text-lg">
+                                    <h3>Consumo</h3>
+                                    <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[2]['consumos'][0]['consumo_m3'] }}" readonly>
+                                    <h3>Gasto</h3>
+                                    <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[2]['consumos'][0]['consumo_pesos'] }}" readonly>
                                 </div>
                             </div>
-                            <div class="text-lg">
-                                <h3>Consumo</h3>
-                                <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                                <h3>Gasto</h3>
-                                <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        @else
-            <p>No hay datos disponibles.</p>
-        @endif
-    </div>
-
-    <!-- Chart.js Script -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Gráfico para Contador 1
-        const ctx1 = document.getElementById('Contador1');
-        new Chart(ctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ['Consumo', 'Espacio Vacío'],
-                datasets: [{
-                    label: 'Consumo',
-                    data: [5.89, 20.00 - 5.89], // Datos de ejemplo
-                    backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
-                    borderColor: '#00c6ff', // Azul armonioso
-                    borderWidth: 2 // Ancho del borde
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+            @else
+                <p>No hay datos disponibles.</p>
+            @endif
+        </div>
+        
+        <!-- Chart.js Script -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            @if(isset($contadores) && count($contadores) > 0)
+                // Gráfico para Contador 1
+                const ctx1 = document.getElementById('Contador1');
+                new Chart(ctx1, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Consumo', 'Espacio Vacío'],
+                        datasets: [{
+                            label: 'Consumo',
+                            data: [
+                                parseFloat("{{ $contadores[0]['consumos'][0]['consumo_m3'] }}"),
+                                20.00 - parseFloat("{{ $contadores[0]['consumos'][0]['consumo_m3'] }}")
+                            ],
+                            backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                            borderColor: '#00c6ff', // Azul armonioso
+                            borderWidth: 2 // Ancho del borde
+                        }]
                     },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                const value = tooltipItem.raw;
-                                return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        const value = tooltipItem.raw;
+                                        return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
-        });
-
-        // Gráfico para Contador 2
-        const ctx2 = document.getElementById('contador2');
-        new Chart(ctx2, {
-            type: 'doughnut',
-            data: {
-                labels: ['Consumo', 'Espacio Vacío'],
-                datasets: [{
-                    label: 'Consumo',
-                    data: [12, 20.00 - 12], // Datos de ejemplo
-                    backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
-                    borderColor: '#00c6ff', // Azul armonioso
-                    borderWidth: 2 // Ancho del borde
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+                });
+        
+                // Gráfico para Contador 2
+                const ctx2 = document.getElementById('contador2');
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Consumo', 'Espacio Vacío'],
+                        datasets: [{
+                            label: 'Consumo',
+                            data: [
+                                parseFloat("{{ $contadores[1]['consumos'][0]['consumo_m3'] }}"),
+                                20.00 - parseFloat("{{ $contadores[1]['consumos'][0]['consumo_m3'] }}")
+                            ],
+                            backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                            borderColor: '#00c6ff', // Azul armonioso
+                            borderWidth: 2 // Ancho del borde
+                        }]
                     },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                const value = tooltipItem.raw;
-                                return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        const value = tooltipItem.raw;
+                                        return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
-        });
-
-        // Gráfico para Contador 3
-        const ctx3 = document.getElementById('contador3');
-        new Chart(ctx3, {
-            type: 'doughnut',
-            data: {
-                labels: ['Consumo', 'Espacio Vacío'],
-                datasets: [{
-                    label: 'Consumo',
-                    data: [7.5, 20.00 - 7.5], // Datos de ejemplo
-                    backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
-                    borderColor: '#00c6ff', // Azul armonioso
-                    borderWidth: 2 // Ancho del borde
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+                });
+        
+                // Gráfico para Contador 3
+                const ctx3 = document.getElementById('contador3');
+                new Chart(ctx3, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Consumo', 'Espacio Vacío'],
+                        datasets: [{
+                            label: 'Consumo',
+                            data: [
+                                parseFloat("{{ $contadores[2]['consumos'][0]['consumo_m3'] }}"),
+                                20.00 - parseFloat("{{ $contadores[2]['consumos'][0]['consumo_m3'] }}")
+                            ],
+                            backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                            borderColor: '#00c6ff', // Azul armonioso
+                            borderWidth: 2 // Ancho del borde
+                        }]
                     },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                const value = tooltipItem.raw;
-                                return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        const value = tooltipItem.raw;
+                                        return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
-        });
-    </script>
-@endsection
+                });
+            @endif
+        </script>
+        @endsection
+        
 </body>
 
 </html>
