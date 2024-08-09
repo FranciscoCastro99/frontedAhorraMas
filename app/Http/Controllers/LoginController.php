@@ -10,8 +10,8 @@ class LoginController extends Controller
 {
     public function loginStore(Request $request)
     {
-        $url = env('URL_SERVER_API');
-        $response = Http::post($url. '/login',[
+        $url = env('URL_API_LOGIN');
+        $response = Http::post($url,[
             'CoD'      => $request->CoD,
             'password' => $request->password
         ]);

@@ -15,13 +15,31 @@ class ContadorController extends Controller
         return view('perfil.inicio');
     }
 
-    public function ContadorIndex(){
-        return view('perfil.Contador');
-    }
+    // public function ContadorIndex(){
+    //     return view('perfil.Contador');
+    // }
 
 
     public function DeleteContador(){
-        return view('perfil.EliminarContador');
+        
+    try {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get(env('URL_API_CONTADOR'));
+        $data = json_decode($response->getBody(), true);
+
+        // Verifica si los datos están bien
+        // dd($data);
+        
+        $datosPredeterminados = [
+            ['id' => 1, 'nombre_contador' => 'Contador 1', 'consumos' => [['consumo_m3' => 100, 'consumo_pesos' => 5000]]],
+            ['id' => 2, 'nombre_contador' => 'Contador 2', 'consumos' => [['consumo_m3' => 150, 'consumo_pesos' => 7500]]],
+            ['id' => 3, 'nombre_contador' => 'Contador 3', 'consumos' => [['consumo_m3' => 200, 'consumo_pesos' => 10000]]],
+        ];
+        return view('perfil.EliminarContador', ['contadores' => $data]);
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Manejo de errores
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
     }
 
     public function EditarContador(){

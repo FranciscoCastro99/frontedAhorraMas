@@ -42,15 +42,15 @@ Route::get('/registro/Admin', [ContadorController::class, 'registroAdmin'])->nam
 
 Route::get('/user', [ContadorController::class, 'UserIndex'])->name('perfil.Inicio');
 
-Route::get('/user/contador', [ContadorController::class, 'ContadorIndex'])->name('perfil.Contador');
+// Ruta para ContadorDataController
+Route::get('/user/contador', [ContadorDataController::class, 'ContadorIndex'])->name('perfil.Contador');
+Route::post('/contador', [ContadorDataController::class, 'ContadorStore'])->name('Contador.store');
+
+// Rutas para ContadorController
 Route::get('/user/contador/agregar', [ContadorController::class, 'AgregarIndex'])->name('perfil.Agregar');
 Route::get('/user/contador/mostrar', [ContadorController::class, 'MostrarShow'])->name('perfil.Mostrar');
 Route::get('/user/contador/eliminar', [ContadorController::class, 'DeleteContador'])->name('perfil.Eliminar');
 Route::get('/user/contador/editar', [ContadorController::class, 'EditarContador'])->name('perfil.Editar');
-
-//conexion con la base de datos
-Route::get('/contador', [ContadorDataController::class, 'ContadorIndex'])->name('Contador.index');
-Route::post('/contador', [ContadorDataController::class, 'ContadorStore'])->name('Contador.store');
 
 
 //conexion base de datos presupuesto

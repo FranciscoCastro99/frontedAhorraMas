@@ -11,8 +11,8 @@ class RegistroController extends Controller
     //prueba de comunicacion con el server
     
     public function registroIndex(){
-        $url = env('URL_SERVER_API');
-        $response = Http::get($url. '/register');
+        $url = env('URL_API_REGISTER');
+        $response = Http::get($url);
         $data = $response->json();
         return view('PREUBAS.conexion', compact('data'));
     }
@@ -22,8 +22,9 @@ class RegistroController extends Controller
     }
 
     public function registroStore(Request $request){
-        $url = env('URL_SERVER_API');
-        $response = Http::post($url. '/register', [
+        $url = env('URL_API_REGISTER');
+
+        $response = Http::post($url,[
             'name'           => $request->name,
             'lastName'       => $request->lastName, 
             'email'          => $request->email,
@@ -36,9 +37,10 @@ class RegistroController extends Controller
         if ($response->successful()) {
             return redirect()->route('perfil.Inicio')->with('success', 'Registro creado correctamente.');
         } else {
-
-            $errors = $responseData['errors'] ??[];
-            return back()->withErrors($errors)->with('message', $responseData['message']);
+            // Verifica la estructura de $responseData antes de acceder a las claves
+            $errors = $responseData['errors'] ?? [];
+            $message = $responseData['message'] ?? 'Error desconocido';
+            return back()->withErrors($errors)->with('message', $message);
         }
     }
 

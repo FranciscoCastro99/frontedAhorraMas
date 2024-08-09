@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col pt-8 items-center gap-6">
-                    <a href="{{route('perfil.Agregar')}}" class="bg-verdeBotones hover:bg-green-500 text-white text-center h-auto w-1/2 py-2 rounded-xl">Guardar Cambios</a>
+                    <a href="{{route('perfil.Contador')}}" class="bg-verdeBotones hover:bg-green-500 text-white text-center h-auto w-1/2 py-2 rounded-xl">Guardar Cambios</a>
                 </div>
             </div>
 
@@ -132,164 +132,189 @@
                     <h1 class="font-semibold text-2xl">Contador Principal</h1>
                     <h2 class="font-semibold"> Contador: {{ "contador_id" }}</h2>
 
-                {{-- grafica de contador --}}
+                 {{-- grafica de contador --}}
 
-                    <div class="h-44 grid grid-cols-2 px-4">
-                        <div class="flex justify-center">
 
-                            <div class="w-40">
-                                <canvas id="Contador1"></canvas>
-                            </div>
-
-                              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                              <script>
-                                const ctx = document.getElementById('Contador1');
-
-                                new Chart(ctx, {
-                                  type: 'doughnut',
-                                  data: {
-                                    // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                    datasets: [{
-                                      label: '# of Votes',
-                                      data: [12, 19, 3, 5, 2, 3],
-                                      borderWidth: 1
-                                    }]
-                                  },
-                                  options: {
-                                    scales: {
-                                      y: {
-                                        beginAtZero: true
-                                      }
-                                    }
-                                  }
-                                });
-                              </script>
-                              <div class="">
-                                  <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
-                              </div>
-                        </div>
+                 @if(isset($contadores) && count($contadores) > 0)
+                 <!-- Gráfico para Contador 1 -->
+                 <div class="h-44 grid grid-cols-2 px-4">
+                     <div class="flex justify-center">
                         <div class="">
-                            <h3>Consumo</h3>
-                            <input type="text" name="consumo_m3" class="w-1/4 rounded-lg" placeholder="55220">
-                            <h3>Gasto</h3>
-                            <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg"  placeholder="55220">
+                            <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
                         </div>
-                    </div>
-                </div>
-                <div class="h-1/2 flex flex-col text-center text-xl">
-                    <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
-                    <div class="flex h-full">
-                        <div class="h-full p-2">
-                            <h2 class="pb-2">Contador 2</h2>
-                            <div class="grid grid-cols-2">
-                                <div class="flex justify-center">
-                                    <div class="w-40">
-                                        <canvas id="contador2"></canvas>
-                                    </div>
-
-                                    <script>
-                                    const ctxs = document.getElementById('contador2');
-
-                                    new Chart(ctxs, {
-                                        type: 'doughnut',
-                                        data: {
-                                        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                        datasets: [{
-                                            label: '# of Votes',
-                                            data: [12, 19, 3, 5, 2, 3],
-                                            borderWidth: 1
-                                        }]
-                                        },
-                                        options: {
-                                        scales: {
-                                            y: {
-                                            beginAtZero: true
-                                            }
-                                        }
-                                        }
-                                    });
-                                    </script>
+                         <div class="w-40">
+                             <canvas id="Contador1"></canvas>
+                         </div>
+                     </div>
+                     <div class="">
+                         <h3>Consumo</h3>
+                         <input type="text" name="consumo_m3" class="w-1/4 rounded-lg" value="{{ $contadores[0]['consumos'][0]['consumo_m3'] }}" readonly>
+                         <h3>Gasto</h3>
+                         <input type="text" name="consumo_pesos" class="w-1/4 rounded-lg" value="{{ $contadores[0]['consumos'][0]['consumo_pesos'] }}" readonly>
+                     </div>
+                 </div>
+         
+                 <!-- Gráfico para Contador 2 -->
+                 <div class="h-1/2 flex flex-col text-center text-xl">
+                     <h2 class="font-semibold text-xl py-4">Contadores Secundarios</h2>
+                     <div class="flex h-full">
+                         <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
+                             <h2 class="pb-2">Contador 2</h2>
+                             <div class="grid grid-cols-2">
+                                 <div class="flex justify-center">
                                     <div class="">
-                                    <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
+                                        <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
                                     </div>
-                                </div>
-                                <div class="text-lg">
-                                    <h3>Consumo</h3>
-                                    <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                                    <h3>Gasto</h3>
-                                    <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="h-full p-2">
-                            <h2 class="pb-2">Contador 3</h2>
-                            <div class="grid grid-cols-2">
-                                <div class="flex justify-center">
-                                    <div class="w-40">
-                                        <canvas id="contador3"></canvas>
-                                    </div>
-
-                                    <script>
-                                    const ctxse = document.getElementById('contador3');
-
-                                    new Chart(ctxse, {
-                                        type: 'doughnut',
-                                        data: {
-                                        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                        datasets: [{
-                                            label: '# of Votes',
-                                            data: [12, 19, 3, 5, 2, 3],
-                                            borderWidth: 1
-                                        }]
-                                        },
-                                        options: {
-                                        scales: {
-                                            y: {
-                                            beginAtZero: true
-                                            }
-                                        }
-                                        }
-                                    });
-                                    </script>
+                                     <div class="w-40">
+                                         <canvas id="contador2"></canvas>
+                                     </div>
+                                 </div>
+                                 <div class="text-lg">
+                                     <h3>Consumo</h3>
+                                     <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[1]['consumos'][0]['consumo_m3'] }}" readonly>
+                                     <h3>Gasto</h3>
+                                     <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[1]['consumos'][0]['consumo_pesos'] }}" readonly>
+                                 </div>
+                             </div>
+                         </a>
+                         <a href="{{ route('perfil.Mostrar') }}" class="h-full p-2">
+                             <h2 class="pb-2">Contador 3</h2>
+                             <div class="grid grid-cols-2">
+                                 <div class="flex justify-center">
                                     <div class="">
-                                    <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
+                                        <button class="rounded-full mt-2 w-8 h-8 text-white place-items-center bg-red-500 hover:ring-2 hover:ring-gray-500">X</button>
                                     </div>
-                                </div>
-                                <div class="text-lg">
-                                    <h3>Consumo</h3>
-                                    <input type="text" class="w-1/2 rounded-lg" placeholder="55220">
-                                    <h3>Gasto</h3>
-                                    <input type="text" class="w-1/2 rounded-lg"  placeholder="55220">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            const ctx = document.getElementById('myChart');
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-                },
-                options: {
-                scales: {
-                    y: {
-                    beginAtZero: true
-                    }
-                }
-                }
-            });
-    @endsection
+                                     <div class="w-40">
+                                         <canvas id="contador3"></canvas>
+                                     </div>
+                                 </div>
+                                 <div class="text-lg">
+                                     <h3>Consumo</h3>
+                                     <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[2]['consumos'][0]['consumo_m3'] }}" readonly>
+                                     <h3>Gasto</h3>
+                                     <input type="text" class="w-1/2 rounded-lg" value="{{ $contadores[2]['consumos'][0]['consumo_pesos'] }}" readonly>
+                                 </div>
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+             @else
+                 <p>No hay datos disponibles.</p>
+             @endif
+         </div>
+         
+         <!-- Chart.js Script -->
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+         <script>
+             @if(isset($contadores) && count($contadores) > 0)
+                 // Gráfico para Contador 1
+                 const ctx1 = document.getElementById('Contador1');
+                 new Chart(ctx1, {
+                     type: 'doughnut',
+                     data: {
+                         labels: ['Consumo', 'Espacio Vacío'],
+                         datasets: [{
+                             label: 'Consumo',
+                             data: [
+                                 parseFloat("{{ $contadores[0]['consumos'][0]['consumo_m3'] }}"),
+                                 20.00 - parseFloat("{{ $contadores[0]['consumos'][0]['consumo_m3'] }}")
+                             ],
+                             backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                             borderColor: '#00c6ff', // Azul armonioso
+                             borderWidth: 2 // Ancho del borde
+                         }]
+                     },
+                     options: {
+                         responsive: true,
+                         plugins: {
+                             legend: {
+                                 position: 'top',
+                             },
+                             tooltip: {
+                                 callbacks: {
+                                     label: function(tooltipItem) {
+                                         const value = tooltipItem.raw;
+                                         return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 });
+         
+                 // Gráfico para Contador 2
+                 const ctx2 = document.getElementById('contador2');
+                 new Chart(ctx2, {
+                     type: 'doughnut',
+                     data: {
+                         labels: ['Consumo', 'Espacio Vacío'],
+                         datasets: [{
+                             label: 'Consumo',
+                             data: [
+                                 parseFloat("{{ $contadores[1]['consumos'][0]['consumo_m3'] }}"),
+                                 20.00 - parseFloat("{{ $contadores[1]['consumos'][0]['consumo_m3'] }}")
+                             ],
+                             backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                             borderColor: '#00c6ff', // Azul armonioso
+                             borderWidth: 2 // Ancho del borde
+                         }]
+                     },
+                     options: {
+                         responsive: true,
+                         plugins: {
+                             legend: {
+                                 position: 'top',
+                             },
+                             tooltip: {
+                                 callbacks: {
+                                     label: function(tooltipItem) {
+                                         const value = tooltipItem.raw;
+                                         return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 });
+         
+                 // Gráfico para Contador 3
+                 const ctx3 = document.getElementById('contador3');
+                 new Chart(ctx3, {
+                     type: 'doughnut',
+                     data: {
+                         labels: ['Consumo', 'Espacio Vacío'],
+                         datasets: [{
+                             label: 'Consumo',
+                             data: [
+                                 parseFloat("{{ $contadores[2]['consumos'][0]['consumo_m3'] }}"),
+                                 20.00 - parseFloat("{{ $contadores[2]['consumos'][0]['consumo_m3'] }}")
+                             ],
+                             backgroundColor: ['#00c6ff', '#e0f7fa'], // Azul armonioso y blanco
+                             borderColor: '#00c6ff', // Azul armonioso
+                             borderWidth: 2 // Ancho del borde
+                         }]
+                     },
+                     options: {
+                         responsive: true,
+                         plugins: {
+                             legend: {
+                                 position: 'top',
+                             },
+                             tooltip: {
+                                 callbacks: {
+                                     label: function(tooltipItem) {
+                                         const value = tooltipItem.raw;
+                                         return `${tooltipItem.label}: ${value.toFixed(2)}`;
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 });
+             @endif
+         </script>
+         @endsection
+         
 </body>
 
 </html>

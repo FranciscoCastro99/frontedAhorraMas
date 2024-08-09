@@ -14,8 +14,8 @@ class SimuladorController extends Controller
 
     public function simuladorStore(Request $request)
     {
-        $url = env('URL_SERVER_API');
-        $response = Http::post($url. '/simulador',[
+        $url = env('URL_API');
+        $response = Http::post('http://127.0.0.1:8000/api/simulador',[
             'presupuesto_id' => $request->presupuesto_id,
             'alcantarillado' => $request->alcantarillado,
             'cargo_fijo'     => $request->cargo_fijo
