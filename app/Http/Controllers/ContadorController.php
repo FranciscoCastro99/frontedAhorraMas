@@ -15,9 +15,9 @@ class ContadorController extends Controller
         return view('perfil.inicio');
     }
 
-    public function ContadorIndex(){
-        return view('perfil.Contador');
-    }
+    // public function ContadorIndex(){
+    //     return view('perfil.Contador');
+    // }
 
 
     public function DeleteContador(){

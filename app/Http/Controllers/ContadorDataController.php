@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ContadorDataController extends Controller
 {
-    public function contadorIndex(){
-        $url = env('URL_API_CONTADOR');
-        $response = Http::get($url);
-        $contadorData = $response->json();
-           // Depura los datos
-        dd($contadorData);
-        return view('perfil.Contador', compact('contadorData'));
+    public function ContadorIndex()
+{
+    try {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get(env('URL_API_CONTADOR'));
+        $data = json_decode($response->getBody(), true);
 
+        // Verifica si los datos están bien
+        // dd($data);
+
+        return view('perfil.Contador', ['contadores' => $data]);
+    } catch (\GuzzleHttp\Exception\RequestException $e) {
+        // Manejo de errores
+        return response()->json(['error' => $e->getMessage()], 500);
     }
+}
 
     public function contadorStore(Request $request)
     {

@@ -10,24 +10,44 @@
 </head>
 
 <body>
-    <br><br><br><br><br><br><br>
-    @if(isset($contadorData) && !empty($contadorData))
-    <ul>
-        @foreach($contadorData as $datos)
-            <li>
-                <strong>Contador: {{ $datos['nombre_contador'] }}</strong>
-                <ul>
-                    @foreach($datos['consumos'] as $consumo)
-                        <li>Consumo M3: {{ $consumo['consumo_m3'] }}, Consumo Pesos: {{ $consumo['consumo_pesos'] }}</li>
-                    @endforeach
-                </ul>
-            </li>
-        @endforeach
-    </ul>
-@else
-    <p>No hay datos disponibles.</p>
-@endif
+    <br><br><br><br><br><br>
+   
+    <div class="container">
+        <h1>Lista de Consumos por Contador</h1>
 
+        @if(isset($contadores) && count($contadores) > 0)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID del Contador</th>
+                        <th>Nombre del Contador</th>
+                        <th>Consumos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($contadores as $contador)
+                        <tr>
+                            <td>{{ $contador['id'] }}</td>
+                            <td>{{ $contador['nombre_contador'] }}</td>
+                            <td>
+                                @if(count($contador['consumos']) > 0)
+                                    <ul>
+                                        @foreach($contador['consumos'] as $consumo)
+                                            <li>Consumo (m³): {{ $consumo['consumo_m3'] }} | Consumo (Pesos): {{ $consumo['consumo_pesos'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    No hay consumos registrados
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>No se encontraron datos de contadores.</p>
+        @endif
+    </div>
     {{-- @section('contenido')
         <div class="grid grid-cols-2 p-4">
             <div class="h-screen ml-8">
