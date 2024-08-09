@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/registro.css') }}">
+    <link rel="shortcut icon" href="{{asset('img/logo.svg')}}" type="image/x-icon">
     <title>Ahorra+</title>
-</head> 
+</head>
 
     {{-- mensakes por si se crea o no correctamente el registro --}}
     <!-- Mostrar mensaje de éxito si existe -->
@@ -17,14 +18,14 @@
     @endif
 
 <!-- Mostrar mensaje general si existe -->
-    @if(session('message')) 
+    @if(session('message'))
     <div class="alert alert-danger">
         {{ session('message') }}
     </div>
     @endif
 
     <!-- Mostrar errores específicos si existen     -->
-    @if($errors->any()) 
+    @if($errors->any())
     <div class="alert alert-danger">
         @foreach($errors->all() as $error)
             <p>{{ $error }}</p>

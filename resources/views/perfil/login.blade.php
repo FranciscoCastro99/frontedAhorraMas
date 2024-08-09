@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="modal.css">
+    <link rel="shortcut icon" href="{{asset('img/logo.svg')}}" type="image/x-icon">
+
 </head>
 <body>
     <div class="w-screen h-screen bg-white sm:bg-gray-20 relative flex m-0 p-0">
@@ -16,15 +18,15 @@
             <img class="object-cover absolute h-full justify-end z-50" src="/img/plantilla.svg" alt="">
         </div>
 
-        
+
 
 
         <div class="py-6 relative w-full h-screen sm:w-7/12 md:w-6/12 lg:w-4/12 m-auto">
             <div class="bg-white rounded py-2 px-6 flex flex-col justify-center">
                 <div class="mb-4">
                     <h1 class="text-center font-sans font-bold pt-4 pb-8">INICIAR SESIÓN</h1>
-                    
-       
+
+
     {{-- mensakes por si se crea o no correctamente el registro --}}
     <!-- Mostrar mensaje de éxito si existe -->
     @if(session('success'))
@@ -34,14 +36,14 @@
     @endif
 
 <!-- Mostrar mensaje general si existe -->
-    @if(session('message')) 
+    @if(session('message'))
     <div class="alert alert-danger">
         {{ session('message') }}
     </div>
     @endif
 
     <!-- Mostrar errores específicos si existen     -->
-    @if($errors->any()) 
+    @if($errors->any())
     <div class="alert alert-danger">
         @foreach($errors->all() as $error)
             <p>{{ $error }}</p>

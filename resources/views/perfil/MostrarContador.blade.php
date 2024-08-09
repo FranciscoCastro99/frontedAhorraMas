@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ahorra+</title>
+    <link rel="shortcut icon" href="{{asset('img/logo.svg')}}" type="image/x-icon">
+
 </head>
 
 <body>
@@ -104,7 +106,7 @@
                         </svg>
                     </div>
                     <div class="flex justify-center mt-8">
-                        <a href="" class="flex justify-center w-auto h-auto text-md bg-gray-400 text-center hover:bg-gray-500 text-white p-2 rounded-xl">
+                        <a href="{{route('perfil.Editar')}}" class="flex justify-center w-auto h-auto text-md bg-gray-400 text-center hover:bg-gray-500 text-white p-2 rounded-xl">
                             <svg width="20" height="20" class="mr-2 ml-2" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 40H8.5625L33 15.5625L29.4375 12L5 36.4375V40ZM0 45V34.375L33 1.4375C33.5 0.979167 34.0521 0.625 34.6562 0.375C35.2604 0.125 35.8958 0 36.5625 0C37.2292 0 37.875 0.125 38.5 0.375C39.125 0.625 39.6667 1 40.125 1.5L43.5625 5C44.0625 5.45833 44.4271 6 44.6563 6.625C44.8854 7.25 45 7.875 45 8.5C45 9.16667 44.8854 9.80208 44.6563 10.4062C44.4271 11.0104 44.0625 11.5625 43.5625 12.0625L10.625 45H0ZM31.1875 13.8125L29.4375 12L33 15.5625L31.1875 13.8125Z" fill="#585353"/>
                             </svg>

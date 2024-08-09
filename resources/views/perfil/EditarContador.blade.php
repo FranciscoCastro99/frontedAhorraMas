@@ -1,7 +1,7 @@
 @extends('Plantilla')
     @section('contenido')
         <div class="flex h-screen w-screen">
-            <div class="w-1/2 h-full py-4">
+            <div class="w-1/2 h-full">
                 <h1 class="text-center py-4 font-semibold text-3xl">Contador 1</h1>
                 <div>
                     <svg width="120" height="130" viewBox="0 0 170 169" fill="none" class="w-full"
@@ -186,7 +186,7 @@
                             </div>
                         </form>
                     </div>
-                <div class="text-center gap-4 mt-4">
+                <div class="text-center gap-4 mt-2">
                     <button type="submit" class="p-2 rounded-2xl text-white bg-azulBotones hover:bg-cyan-700">Guardar Cambios</button>
                 </div>
             </div>
